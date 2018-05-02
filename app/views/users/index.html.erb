@@ -1,0 +1,29 @@
+<%= flash[:notice] %>
+<table border="1">
+  <thead>
+    <tr class="field_name">
+      <!--<th class="name"><a href="">Name</a></th>-->
+      <th class="name">Name</th>
+      <th class="date">Date</th>
+      <th class="number">Number</th>
+      <th class="description">Description</th>
+    <tr>
+  </thead>
+  <tbody class="tbody">
+    <% @users.each do |user| %>
+      <tr class="users">
+        <td class="new_name"><%=user.name%></td>
+        <td class="new_date"><%=user.date%></td>
+        <td class="new_number"><%=user.number%></td>
+        <td class="new_description"><%=user.description%></td>
+      </tr>
+    <% end %>
+  <tbody>
+</table>
+<div>
+  <h4>Import that data!</h4>
+  <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+        <%= submit_tag 'import CSV'%>
+    <% end %>
+</div>
