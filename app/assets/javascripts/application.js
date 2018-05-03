@@ -13,6 +13,6 @@
 //= require jquery2
 //= require rails-ujs
 //= require turbolinks
-//= require user
 //= require sorting
+//= require filter
 //= require_tree .

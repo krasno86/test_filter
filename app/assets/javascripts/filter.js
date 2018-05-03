@@ -1,10 +1,11 @@
-$(document).on('click', '.field_name', function(event) {
-    var type = $(event.target).text();
+$(document).on('click', '#search', function(e) {
+    e.preventDefault();
+    // var type = $(event.target).text();
     $.ajax({
-        url: '/users/sorting',
+        url: '/users/search',
         dataType: "json",
         type: 'post',
-        data: { type: $(event.target).text() },
+        data: { name: $('#user').val() },
         success: function(data) {
             $('.tbody').html('');
             data['users'].forEach(function (e) {

@@ -1,8 +1,9 @@
 <%= flash[:notice] %>
+<%= text_field_tag :user %>
+<%= submit_tag 'search', id: 'search' %>
 <table border="1">
   <thead>
     <tr class="field_name">
-      <!--<th class="name"><a href="">Name</a></th>-->
       <th class="name">Name</th>
       <th class="date">Date</th>
       <th class="number">Number</th>

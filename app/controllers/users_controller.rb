@@ -14,17 +14,16 @@ class UsersController < ApplicationController
   end
 
   def sorting
-    if params[:type] == 'Name'
-      users = User.all.order(:name).pluck(:name, :date, :number, :description)
-      # column_name = 'new_name'
-    elsif params[:type] == 'Date'
-      users = User.all.order(:date).pluck(:name, :date, :number, :description)
-    elsif params[:type] == 'Number'
-      users = User.all.order(:number).pluck(:name, :date, :number, :description)
-    elsif params[:type] == 'Description'
-      users = User.all.order(:description).pluck(:name, :date, :number, :description)
-    end
-
+    users = User.all.order(params[:type].downcase).pluck(:name, :date, :number, :description)
     render json: { users: users }, status: 200
+  end
+
+  def search
+    users = User.where(name: params[:name]).pluck(:name, :date, :number, :description)
+    if users
+      render json: { users: users }, status: 200
+    else
+      render json: { status: 404 }
+    end
   end
 end
