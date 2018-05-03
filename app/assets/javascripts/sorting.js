@@ -1,5 +1,4 @@
 $(document).on('click', '.field_name', function(event) {
-    var type = $(event.target).text();
     $.ajax({
         url: '/users/sorting',
         dataType: "json",

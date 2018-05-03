@@ -1,6 +1,5 @@
 $(document).on('click', '#search', function(e) {
     e.preventDefault();
-    // var type = $(event.target).text();
     $.ajax({
         url: '/users/search',
         dataType: "json",
